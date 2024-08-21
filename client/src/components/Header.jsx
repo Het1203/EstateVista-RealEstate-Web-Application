@@ -21,7 +21,7 @@ export default function Header() {
                     </form>
 
                     <ul className='flex gap-6'>
-                        <Link to='/home'>
+                        <Link to='/'>
                             <li className='hidden md:inline text-dark-600'>
                                 Home
                             </li>

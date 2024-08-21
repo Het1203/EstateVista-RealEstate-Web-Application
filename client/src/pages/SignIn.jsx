@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
-
-    const [formData, setFormData] = React.useState({})
+    const [formData, setFormData] = React.useState({});
+    const [error, setError] = React.useState(null);
+    const [loading, setLoading] = React.useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({
@@ -10,34 +13,45 @@ export default function SignIn() {
             [e.target.id]: e.target.value
         });
     };
-    console.log(formData);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch('localhost:3000/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        const data = await res.json();
-        console.log(data);
+        try {
+            setLoading(true);
+
+            const res = await fetch('http://localhost:3000/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            const data = await res.json();
+
+            if (data.success === false) {
+                setError(data.message);
+                setLoading(false);
+                return;
+            }
+            setLoading(false);
+            setError(null);
+
+            navigate('/');
+
+        } catch (error) {
+            setLoading(false);
+            setError(error.message);
+        }
+
     };
 
     return (
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl text-center font-semibold my-7 text-dark-500'>
-                SIGNIN
+                LOGIN
             </h1>
 
             <form className='mt-4 gap-5' onSubmit={handleSubmit}>
-                <div className='flex flex-col max-w-md mx-auto p-3'>
-                    <label htmlFor='name' className='text-xl text-gray-700'>
-                        Username:
-                    </label>
-                    <input type='text' id='username' placeholder='Enter your username' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none' onChange={handleChange} />
-                </div>
                 <div className='flex flex-col max-w-md mx-auto p-3'>
                     <label htmlFor='email' className='text-xl text-gray-700'>
                         Email:
@@ -51,16 +65,17 @@ export default function SignIn() {
                     <input type='password' id='password' placeholder='Enter your password' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none' onChange={handleChange} />
                 </div>
                 <div className='flex flex-col max-w-md mx-auto p-3'>
-                    <button className='bg-gray-700 text-white p-2 rounded-lg mt-2 hover:opacity-95 disabled:opacity-80'>
-                        SIGNUP
+                    <button type='submit' disabled={loading} className='bg-gray-700 text-white p-2 rounded-lg mt-2 hover:opacity-95 disabled:opacity-80'>
+                        {loading ? 'Loading...' : 'LOGIN'}
                     </button>
                 </div>
-                <div>
-                    <p className='text-center text-gray-500'>
-                        Already have an account? <a href='/signin' className='text-blue-500'>Login</a>
-                    </p>
-                </div>
             </form>
+            <div>
+                <p className='text-center text-gray-500'>
+                    Dont have an account? <a href='/signup' className='text-blue-500'>REGISTER</a>
+                </p>
+            </div>
+            {error && <p className='text-red-500 text-center mt-5'> {error} </p>}
         </div>
-    )
+    );
 }

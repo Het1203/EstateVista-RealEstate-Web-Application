@@ -48,7 +48,7 @@ export default function SignUp() {
     return (
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl text-center font-semibold my-7 text-dark-500'>
-                SIGNUP
+                REGISTER
             </h1>
 
             <form className='mt-4 gap-5' onSubmit={handleSubmit}>
@@ -72,7 +72,7 @@ export default function SignUp() {
                 </div>
                 <div className='flex flex-col max-w-md mx-auto p-3'>
                     <button type='submit' disabled={loading} className='bg-gray-700 text-white p-2 rounded-lg mt-2 hover:opacity-95 disabled:opacity-80'>
-                        {loading ? 'Loading...' : 'SIGNUP'}
+                        {loading ? 'Loading...' : 'REGISTER'}
                     </button>
                 </div>
             </form>
