@@ -36,7 +36,7 @@ export default function Header() {
                                 Contact
                             </li>
                         </Link>
-                        <Link to='/sign-in'>
+                        <Link to='/signin'>
                             <li className='text-dark-600'>
                                 Login
                             </li>
