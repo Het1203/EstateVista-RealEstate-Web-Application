@@ -9,6 +9,7 @@ import About from './pages/About';
 import SignUp from './pages/SignUp';
 import Header from './components/Header';
 import Contact from './pages/Contact';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route element={<PrivateRoute />} >
+            <Route path="/profile" element={<Profile />} />
+          </Route>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<SignIn />} />

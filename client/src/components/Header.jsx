@@ -1,8 +1,14 @@
-import React from 'react'
-import { FaSearch } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function Header() {
+    const currentUser = useSelector(state => state.user.currentUser);
+
+    // Debugging: Log currentUser to check if it is being updated correctly
+    // console.log('Current User:', currentUser);
+
     return (
         <>
             <header className='fixed top-0 left-0 w-full shadow-md bg-white z-50'>
@@ -36,14 +42,23 @@ export default function Header() {
                                 Contact
                             </li>
                         </Link>
-                        <Link to='/signin'>
-                            <li className='text-dark-600'>
-                                Login
-                            </li>
-                        </Link>
+
+                        {currentUser ? (
+                            <Link to='/profile'>
+                                {/* Debugging: Log currentUser.photo to check if it is a valid URL */}
+                                {/* {console.log('Profile Photo URL:', currentUser.photo)} */}
+                                <img className='rounded-full h-7 w-7 object-cover' src={currentUser.photo} alt='profile' />
+                            </Link>
+                        ) : (
+                            <Link to='/signin'>
+                                <li className='text-dark-600'>
+                                    Login
+                                </li>
+                            </Link>
+                        )}
                     </ul>
                 </div>
             </header>
         </>
-    )
+    );
 }
