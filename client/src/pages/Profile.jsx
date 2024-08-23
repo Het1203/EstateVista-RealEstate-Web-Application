@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signOutUserStart, signOutUserSuccess, signOutUserFailure } from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
     const currentUser = useSelector(state => state.user.currentUser);
@@ -122,8 +123,14 @@ export default function Profile() {
 
                 <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
                     <button disabled={loading} type='submit' className='bg-gray-700 text-white p-2 rounded-lg mt-2 hover:opacity-95 w-full'>
-                        {loading ? 'Loading...' : 'Update'}
+                        {loading ? 'Loading...' : 'UPDATE'}
                     </button>
+                </div>
+
+                <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
+                    <Link className='bg-green-700 text-center text-white p-2 uppercase rounded-lg hover:opacity-95' to={"/create-listing"} >
+                        Create Listing
+                    </Link>
                 </div>
 
                 <div className='flex justify-between max-w-md mx-auto p-3 w-full'>

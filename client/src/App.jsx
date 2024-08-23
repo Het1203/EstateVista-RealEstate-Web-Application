@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp';
 import Header from './components/Header';
 import Contact from './pages/Contact';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import CreateListing from './pages/CreateListing.jsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/create-listing" element={<CreateListing />} />
         </Routes>
       </Router>
     </Provider>
