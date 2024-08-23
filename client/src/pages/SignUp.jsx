@@ -21,6 +21,7 @@ export default function SignUp() {
             setLoading(true);
 
             const res = await fetch('http://localhost:3000/signup', {
+                credentials: 'include',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
