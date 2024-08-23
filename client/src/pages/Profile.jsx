@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure } from '../redux/user/userSlice.js';
+import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signOutUserStart, signOutUserSuccess, signOutUserFailure } from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
 
 export default function Profile() {
@@ -68,6 +68,28 @@ export default function Profile() {
         }
     }
 
+    const handleSignOut = async () => {
+        try {
+            dispatch(signOutUserStart());
+            const res = await fetch('http://localhost:3000/signout', {
+                credentials: 'include',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+            if (data.success === false) {
+                dispatch(signOutUserFailure(data.message));
+                return;
+            }
+
+            dispatch(signOutUserSuccess());
+        } catch (error) {
+            dispatch(signOutUserFailure(error.message));
+        }
+    }
+
     return (
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl font-semibold text-center my-7 uppercase text-dark-500'>Profile</h1>
@@ -106,7 +128,7 @@ export default function Profile() {
 
                 <div className='flex justify-between max-w-md mx-auto p-3 w-full'>
                     <span onClick={handleDeleteUser} className='text-red-600 cursor-pointer'>Delete Account</span>
-                    <span className='text-red-600 cursor-pointer'>Logout</span>
+                    <span onClick={handleSignOut} className='text-red-600 cursor-pointer'>Logout</span>
                 </div>
 
                 {/* {error && <p className='text-red-500 text-center mt-5'> {error} </p>} */}
