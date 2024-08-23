@@ -26,6 +26,7 @@ export default function SignIn() {
             // setLoading(true);
 
             const res = await fetch('http://localhost:3000/signin', {
+                credentials: 'include',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
