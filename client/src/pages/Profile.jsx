@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 export default function Profile() {
     const currentUser = useSelector(state => state.user.currentUser);
     const { error, loading } = useSelector(state => state.user);
-    const dispatch = useDispatch();
-
     const [formData, setFormData] = React.useState({});
-
     const [updatedSuccess, setUpdatedSuccess] = React.useState(false);
+    const [showListingError, setShowListingError] = React.useState(false);
+    const [userListings, setUserListings] = React.useState([]);
+
+    const dispatch = useDispatch();
 
     console.log(formData);
 
@@ -91,6 +92,29 @@ export default function Profile() {
         }
     }
 
+    const handleShowListings = async () => {
+        try {
+            setShowListingError(false);
+            const res = await fetch(`http://localhost:3000/user/listings/${currentUser._id}`, {
+                credentials: 'include',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            if (data.success === false) {
+                setShowListingError(true);
+                return;
+            }
+
+            setUserListings(data);
+        } catch (error) {
+            setShowListingError(true);
+        }
+    }
+
     return (
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl font-semibold text-center my-7 uppercase text-dark-500'>Profile</h1>
@@ -142,6 +166,38 @@ export default function Profile() {
             {/* {error && <p className='text-red-500 text-center mt-5'> {error} </p>} */}
             <p className='text-red-500 text-center mt-5'>{error ? error : ''} </p>
             <p className='text-green-600 text-center mt-5'>{updatedSuccess ? 'User is updated successfully' : ''}</p>
+
+            <div className="flex justify-center items-center">
+                <button onClick={handleShowListings} className='uppercase text-gray-700'>Show listings</button>
+            </div>
+            <p className='text-red-500 mt-5'>{showListingError ? 'Error showing listings' : ''}</p>
+
+            {userListings && userListings.length > 0 &&
+                <div className='flex flex-col gap-4 max-w-lg mx-auto p-2 w-full'>
+                    <h1 className='text-gray-700 text-center mt-7 text-2xl uppercase font-semibold'> Your current Listings</h1>
+                    {userListings.map((listing) => (
+                        <div key={listing._id} className='border rounded-lg p-3 flex justify-between items-center gap-4'>
+                            <div className='flex items-center gap-2'>
+                                <Link to={`http://localhost:3000/listing/${listing._id}`} className='h-16 w-16 mt-2'>
+                                    <img src={listing.imageUrls[0]} alt='listing cover' className='object-contain mt-2' />
+                                </Link>
+                                <Link className='font-semibold hover:underline truncate' to={`http://localhost:3000/listing/${listing._id}`}>
+                                    <p>{listing.name}</p>
+                                </Link>
+                            </div>
+                            <div className='flex flex-col'>
+                                <button className='uppercase text-red-600'>
+                                    Delete
+                                </button>
+                                <button className='uppercase text-green-600'>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            }
+
         </div>
     );
 }
