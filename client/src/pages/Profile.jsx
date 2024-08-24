@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signOutUserStart, signOutUserSuccess, signOutUserFailure } from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { set } from 'mongoose';
 
 export default function Profile() {
     const currentUser = useSelector(state => state.user.currentUser);
@@ -115,6 +116,27 @@ export default function Profile() {
         }
     }
 
+    const handleDeleteListing = async (lisitngid) => {
+        try {
+            const res = await fetch(`http://localhost:3000/listing/delete/${lisitngid}`, {
+                credentials: 'include',
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await res.json();
+
+            if (data.success === false) {
+                console.log(data.message);
+                return;
+            }
+            setUserListings((prev) => prev.filter((listing) => listing._id !== lisitngid));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl font-semibold text-center my-7 uppercase text-dark-500'>Profile</h1>
@@ -186,7 +208,7 @@ export default function Profile() {
                                 </Link>
                             </div>
                             <div className='flex flex-col'>
-                                <button className='uppercase text-red-600'>
+                                <button onClick={() => handleDeleteListing(listing._id)} className='uppercase text-red-600'>
                                     Delete
                                 </button>
                                 <button className='uppercase text-green-600'>
