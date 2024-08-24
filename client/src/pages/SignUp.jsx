@@ -83,7 +83,7 @@ export default function SignUp() {
             </form>
             <div>
                 <p className='text-center text-gray-500'>
-                    Already have an account? <a href='/signin' className='text-blue-500'>Login</a>
+                    Already have an account? <a href='/signin' className='text-blue-500'>LOGIN</a>
                 </p>
             </div>
             {error && <p className='text-red-500 text-center mt-5'> {error} </p>}

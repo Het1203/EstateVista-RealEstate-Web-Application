@@ -133,15 +133,15 @@ export default function Profile() {
                     </Link>
                 </div>
 
-                <div className='flex justify-between max-w-md mx-auto p-3 w-full'>
-                    <span onClick={handleDeleteUser} className='text-red-600 cursor-pointer'>Delete Account</span>
-                    <span onClick={handleSignOut} className='text-red-600 cursor-pointer'>Logout</span>
-                </div>
-
-                {/* {error && <p className='text-red-500 text-center mt-5'> {error} </p>} */}
-                <p className='text-red-500 text-center mt-5'>{error ? error : ''} </p>
-                <p className='text-green-600 text-center mt-5'>{updatedSuccess ? 'User is updated successfully' : ''}</p>
             </form>
+            <div className='flex justify-between max-w-md mx-auto p-3 w-full'>
+                <span onClick={handleDeleteUser} className='text-red-600 cursor-pointer'>Delete Account</span>
+                <span onClick={handleSignOut} className='text-red-600 cursor-pointer'>Logout</span>
+            </div>
+
+            {/* {error && <p className='text-red-500 text-center mt-5'> {error} </p>} */}
+            <p className='text-red-500 text-center mt-5'>{error ? error : ''} </p>
+            <p className='text-green-600 text-center mt-5'>{updatedSuccess ? 'User is updated successfully' : ''}</p>
         </div>
     );
 }
