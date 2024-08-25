@@ -1,13 +1,28 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export default function Header() {
+    const navigate = useNavigate();
     const currentUser = useSelector(state => state.user.currentUser);
+    const [searchTerm, setSearchTerm] = React.useState('');
 
-    // Debugging: Log currentUser to check if it is being updated correctly
-    // console.log('Current User:', currentUser);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('searchTerm', searchTerm);
+        const searchQuery = urlParams.toString();
+        navigate(`/search?${searchQuery}`);
+    }
+
+    React.useEffect(() => {
+        const urlParams = new URLSearchParams(location.search);
+        const searchTermFromUrl = urlParams.get('searchTerm');
+        if (searchTermFromUrl) {
+            setSearchTerm(searchTermFromUrl);
+        }
+    }, [location.search]);
 
     return (
         <>
@@ -21,9 +36,12 @@ export default function Header() {
                         </h1>
                     </Link>
 
-                    <form className='p-2 border border-gray-300 rounded-lg flex items-center'>
-                        <input type='text' placeholder='Search' className='bg-transparent focus:outline-none w-24 md:w-64 text-dark-400' />
-                        <FaSearch className='text-gray-500' />
+                    <form onSubmit={handleSubmit} className='p-2 border border-gray-300 rounded-lg flex items-center'>
+                        <input type='text' placeholder='Search'
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className='bg-transparent focus:outline-none w-24 md:w-64 text-dark-400' />
+                        <button> <FaSearch className='text-gray-500' /> </button>
                     </form>
 
                     <ul className='flex gap-6'>
@@ -45,8 +63,6 @@ export default function Header() {
 
                         {currentUser ? (
                             <Link to='/profile'>
-                                {/* Debugging: Log currentUser.photo to check if it is a valid URL */}
-                                {/* {console.log('Profile Photo URL:', currentUser.photo)} */}
                                 <img className='rounded-full h-7 w-7 object-cover' src={currentUser.photo} alt='profile' />
                             </Link>
                         ) : (
