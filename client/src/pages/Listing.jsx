@@ -14,6 +14,7 @@ import {
     FaParking,
     FaShare,
 } from 'react-icons/fa';
+import Contact from '../components/Contact';
 
 export default function Listing() {
     SwiperCore.use([Navigation]);
@@ -85,7 +86,7 @@ export default function Listing() {
                     </div>
 
                     {copied && (
-                        <p className='fixed top-[23%] right-[5%] z-10 mt-5 rounded-md bg-slate-100 p-2'>
+                        <p className='fixed top-[24%] right-[4%] z-10 mt-5 rounded-md bg-gray-100 p-2'>
                             Link copied!
                         </p>
                     )}
@@ -94,8 +95,8 @@ export default function Listing() {
                         <p className='text-3xl text-gray-800 uppercase'>
                             {listing.name} - ₹{' '}
                             {listing.offer
-                                ? (listing.discountedPrice ? listing.discountedPrice.toLocaleString('en-US') : 'N/A')
-                                : (listing.regularPrice ? listing.regularPrice.toLocaleString('en-US') : 'N/A')}
+                                ? (listing.discountedPrice ? listing.discountedPrice.toLocaleString('en-IN') : 'N/A')
+                                : (listing.regularPrice ? listing.regularPrice.toLocaleString('en-IN') : 'N/A')}
                             {listing.type === 'rent' && '/month'}
                         </p>
 
@@ -109,8 +110,8 @@ export default function Listing() {
                                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
                             </p>
                             {listing.offer && (
-                                <p className='bg-gray-700 w-full max-w-[200px] text-white text-center p-2 rounded-lg shadow-lg'>
-                                    ₹{(listing.regularPrice && listing.discountedPrice ? (+listing.regularPrice - +listing.discountedPrice).toLocaleString('en-US') : 'N/A')} OFF
+                                <p className='bg-red-700 w-full max-w-[200px] text-white text-center p-2 rounded-lg shadow-lg'>
+                                    ₹{(listing.regularPrice && listing.discountedPrice ? (+listing.regularPrice - +listing.discountedPrice).toLocaleString('en-IN') : 'N/A')} OFF
                                 </p>
                             )}
                         </div>
@@ -145,6 +146,16 @@ export default function Listing() {
                             </li>
                         </ul>
 
+                        {currentUser && listing.userRef !== currentUser._id && !contact && (
+                            <button
+                                onClick={() => setContact(true)}
+                                className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+                            >
+                                Contact landlord
+                            </button>
+                        )}
+
+                        {contact && <Contact listing={listing} />}
                     </div>
                 </>
             )}
