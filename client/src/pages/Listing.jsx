@@ -111,7 +111,7 @@ export default function Listing() {
                             </p>
                             {listing.offer && (
                                 <p className='bg-red-700 w-full max-w-[200px] text-white text-center p-2 rounded-lg shadow-lg'>
-                                    ₹{(listing.regularPrice && listing.discountedPrice ? (+listing.regularPrice - +listing.discountedPrice).toLocaleString('en-IN') : 'N/A')} OFF
+                                    ₹{(listing.regularPrice && listing.discountedPrice ? (+listing.regularPrice - +listing.discountedPrice).toLocaleString('en-IN') : 'N/A')} DISCOUNT
                                 </p>
                             )}
                         </div>
