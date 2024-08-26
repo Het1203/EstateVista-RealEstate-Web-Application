@@ -139,7 +139,7 @@ export default function Profile() {
 
     return (
         <div className='p-4 min-h-screen mt-20'>
-            <h1 className='text-3xl font-semibold text-center my-7 uppercase text-dark-500'>Profile</h1>
+            <h1 className='text-3xl font-bold mb-8 text-center text-gray-800 mt-5 uppercase'>Profile</h1>
 
             <form onSubmit={handleSubmit} className='flex flex-col items-center'>
                 <div className='flex justify-center mb-4'>
