@@ -14,6 +14,7 @@ import CreateListing from './pages/CreateListing.jsx';
 import UpdateListing from './pages/UpdateListing.jsx';
 import Listing from './pages/Listing.jsx';
 import Search from './pages/Search.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
+      <Footer />
     </Provider>
   );
 }
