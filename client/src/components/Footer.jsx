@@ -16,17 +16,17 @@ export default function Footer() {
                             <li><a href='/privacy' className='hover:underline'>Privacy Policy</a></li>
                         </ul>
                     </div>
-                    <div className='flex justify-center space-x-6 mt-6'>
-                        <a href='https://facebook.com' className='text-white hover:text-gray-400'>
-                            <i className='fab fa-facebook-f'></i>
-                        </a>
-                        <a href='https://instagram.com' className='text-white hover:text-gray-400'>
-                            <i className='fab fa-instagram'></i>
-                        </a>
-                        <a href='https://twitter.com' className='text-white hover:text-gray-400'>
-                            <i className='fab fa-twitter'></i>
-                        </a>
-                    </div>
+                </div>
+                <div className='flex justify-center space-x-6 mt-6 mb-6'>
+                    <a href='https://facebook.com' className='text-white hover:text-gray-400'>
+                        <i className='fab fa-facebook-f'></i>
+                    </a>
+                    <a href='https://instagram.com' className='text-white hover:text-gray-400'>
+                        <i className='fab fa-instagram'></i>
+                    </a>
+                    <a href='https://twitter.com' className='text-white hover:text-gray-400'>
+                        <i className='fab fa-twitter'></i>
+                    </a>
                 </div>
                 <div className='mt-6 text-center'>
                     <p className='text-sm'>&copy; {new Date().getFullYear()} EstateVista. All rights reserved.</p>

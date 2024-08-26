@@ -141,45 +141,46 @@ export default function Profile() {
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl font-bold mb-8 text-center text-gray-800 mt-5 uppercase'>Profile</h1>
 
-            <form onSubmit={handleSubmit} className='flex flex-col items-center'>
+            <form onSubmit={handleSubmit} className='flex flex-col items-center max-w-md mx-auto bg-white shadow-lg p-6 rounded-lg'>
                 <div className='flex justify-center mb-4'>
                     <img src={currentUser.photo} alt='profile' className='rounded-full h-24 w-24 object-cover' />
                 </div>
 
-                <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
-                    <label htmlFor='username' className='text-xl text-gray-700'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <label htmlFor='username' className="block font-semibold text-gray-700">
                         Username:
                     </label>
-                    <input type='text' id='username' placeholder='Enter your username' onChange={handleChange} defaultValue={currentUser.username} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full' />
+                    <input type='text' id='username' placeholder='Enter your username' onChange={handleChange} defaultValue={currentUser.username} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' />
                 </div>
 
-                <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
-                    <label htmlFor='email' className='text-xl text-gray-700'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <label htmlFor='email' className="block font-semibold text-gray-700">
                         Email:
                     </label>
-                    <input type='email' id='email' placeholder='Enter your email' onChange={handleChange} defaultValue={currentUser.email} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full' />
+                    <input type='email' id='email' placeholder='Enter your email' onChange={handleChange} defaultValue={currentUser.email} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' />
                 </div>
 
-                <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
-                    <label htmlFor='password' className='text-xl text-gray-700'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <label htmlFor='password' className="block font-semibold text-gray-700">
                         Password:
                     </label>
-                    <input type='password' id='password' placeholder='Enter your password' onChange={handleChange} defaultValue={currentUser.password} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full' />
+                    <input type='password' id='password' placeholder='Enter your password' onChange={handleChange} defaultValue={currentUser.password} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' />
                 </div>
 
-                <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
-                    <button disabled={loading} type='submit' className='bg-gray-700 text-white p-2 rounded-lg mt-2 hover:opacity-95 w-full'>
-                        {loading ? 'Loading...' : 'UPDATE'}
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <button disabled={loading} type='submit' className='bg-gray-700 text-sm font-semibold text-white p-2 rounded-lg mt-2 hover:opacity-95 w-full'>
+                        {loading ? 'Loading...' : 'Update'}
                     </button>
                 </div>
 
-                <div className='flex flex-col max-w-md mx-auto p-3 w-full'>
-                    <Link className='bg-green-700 text-center text-white p-2 uppercase rounded-lg hover:opacity-95' to={"/create-listing"} >
-                        Create Listing
-                    </Link>
-                </div>
-
             </form>
+
+            <div className='flex flex-col mt-5 max-w-md mx-auto p-3 w-full'>
+                <Link className='bg-green-700 text-center text-white p-3 font-semibold uppercase rounded-lg hover:opacity-95' to={"/create-listing"} >
+                    Create Listing
+                </Link>
+            </div>
+
             <div className='flex justify-between max-w-md mx-auto p-3 w-full'>
                 <span onClick={handleDeleteUser} className='text-red-600 cursor-pointer'>Delete Account</span>
                 <span onClick={handleSignOut} className='text-red-600 cursor-pointer'>Logout</span>

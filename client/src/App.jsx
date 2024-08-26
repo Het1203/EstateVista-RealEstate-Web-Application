@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
 import SignIn from './pages/SignIn';
