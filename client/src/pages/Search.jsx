@@ -137,20 +137,20 @@ export default function Search() {
       <div className='p-4 md:border-r-4 md:min-h-screen'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
           <div className='flex items-center mt-16 gap-2'>
-            <label className='whitespace-nowrap text-grey-700 text-lg'>
+            <label className='whitespace-nowrap text-gray-800 text-lg'>
               Search Term:
             </label>
             <input
               type='text'
               id='searchTerm'
               placeholder='Search...'
-              className='border rounded-lg p-3 w-full'
+              className='border rounded-lg p-3 w-full text-gray-800 focus:outline-none'
               value={sidebardata.searchTerm}
               onChange={handleChange}
             />
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
-            <label className='text-grey-700 text-lg'>Type:</label>
+            <label className='text-gray-800 text-lg'>Type:</label>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -159,7 +159,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.type === 'all'}
               />
-              <span>Rent & Sale</span>
+              <span className='text-gray-800'>Rent & Sale</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -169,7 +169,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.type === 'rent'}
               />
-              <span>Rent</span>
+              <span className='text-gray-800'>Rent</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -179,7 +179,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.type === 'sale'}
               />
-              <span>Sale</span>
+              <span className='text-gray-800'>Sale</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -189,11 +189,11 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.offer}
               />
-              <span>Offer</span>
+              <span className='text-gray-800'>Offer</span>
             </div>
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
-            <label className='text-grey-700 text-lg'>Amenities:</label>
+            <label className='text-gray-800 text-lg'>Amenities:</label>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -202,7 +202,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.parking}
               />
-              <span>Parking</span>
+              <span className='text-gray-800'>Parking</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -212,16 +212,16 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.furnished}
               />
-              <span>Furnished</span>
+              <span className='text-gray-800'>Furnished</span>
             </div>
           </div>
           <div className='flex items-center gap-2'>
-            <label className='text-grey-700 text-lg'>Sort:</label>
-            <select onChange={handleChange} defaultValue={'created_at_desc'} id="sort_order" className='border rounded-lg p-3'>
-              <option value='regularPrice_desc'>Price high to low</option>
-              <option value='regularPrice_asc'>Price low to hight</option>
-              <option value='createdAt_desc'>Latest</option>
-              <option value='createdAt_asc'>Oldest</option>
+            <label className='text-gray-800 text-lg'>Sort:</label>
+            <select onChange={handleChange} defaultValue={'created_at_desc'} id="sort_order" className='border text-gray-800 rounded-lg p-3'>
+              <option value='regularPrice_desc' className='text-gray-800'>Price high to low</option>
+              <option value='regularPrice_asc' className='text-gray-800'>Price low to hight</option>
+              <option value='createdAt_desc' className='text-gray-800'>Latest</option>
+              <option value='createdAt_asc' className='text-gray-800'>Oldest</option>
             </select>
           </div>
           <button className='bg-gray-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>

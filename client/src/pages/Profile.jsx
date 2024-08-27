@@ -141,34 +141,34 @@ export default function Profile() {
         <div className='p-4 min-h-screen mt-20'>
             <h1 className='text-3xl font-bold mb-8 text-center text-gray-800 mt-5 uppercase'>Profile</h1>
 
-            <form onSubmit={handleSubmit} className='flex flex-col items-center max-w-md mx-auto bg-white shadow-lg p-6 rounded-lg'>
+            <form onSubmit={handleSubmit} className='flex flex-col items-center bg-gray-800 max-w-md mx-auto shadow-lg p-6 rounded-lg'>
                 <div className='flex justify-center mb-4'>
                     <img src={currentUser.photo} alt='profile' className='rounded-full h-24 w-24 object-cover' />
                 </div>
 
                 <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
-                    <label htmlFor='username' className="block font-semibold text-gray-700">
+                    <label htmlFor='username' className="block font-semibold text-white">
                         Username:
                     </label>
                     <input type='text' id='username' placeholder='Enter your username' onChange={handleChange} defaultValue={currentUser.username} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' />
                 </div>
 
                 <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
-                    <label htmlFor='email' className="block font-semibold text-gray-700">
+                    <label htmlFor='email' className="block font-semibold text-white">
                         Email:
                     </label>
                     <input type='email' id='email' placeholder='Enter your email' onChange={handleChange} defaultValue={currentUser.email} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' />
                 </div>
 
                 <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
-                    <label htmlFor='password' className="block font-semibold text-gray-700">
+                    <label htmlFor='password' className="block font-semibold text-white">
                         Password:
                     </label>
                     <input type='password' id='password' placeholder='Enter your password' onChange={handleChange} defaultValue={currentUser.password} className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' />
                 </div>
 
                 <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
-                    <button disabled={loading} type='submit' className='bg-gray-700 text-sm font-semibold text-white p-2 rounded-lg mt-2 hover:opacity-95 w-full'>
+                    <button disabled={loading} type='submit' className='bg-gray-400 text-sm font-semibold text-white p-2 rounded-lg mt-3 hover:opacity-95 w-full'>
                         {loading ? 'Loading...' : 'Update'}
                     </button>
                 </div>
@@ -176,7 +176,7 @@ export default function Profile() {
             </form>
 
             <div className='flex flex-col mt-5 max-w-md mx-auto p-3 w-full'>
-                <Link className='bg-green-700 text-center text-white p-3 font-semibold uppercase rounded-lg hover:opacity-95' to={"/create-listing"} >
+                <Link className='bg-gray-800 text-center text-white p-3 font-semibold uppercase rounded-lg hover:opacity-95' to={"/create-listing"} >
                     Create Listing
                 </Link>
             </div>
@@ -197,14 +197,14 @@ export default function Profile() {
 
             {userListings && userListings.length > 0 &&
                 <div className='flex flex-col gap-4 max-w-lg mx-auto p-2 w-full'>
-                    <h1 className='text-gray-700 text-center mt-7 text-2xl uppercase font-semibold'> Your current Listings</h1>
+                    <h1 className='text-gray-800 text-center mt-7 text-2xl uppercase font-semibold'> Your current Listings</h1>
                     {userListings.map((listing) => (
-                        <div key={listing._id} className='border rounded-lg p-3 flex justify-between items-center gap-4'>
+                        <div key={listing._id} className='border bg-gray-700 rounded-lg p-3 flex justify-between items-center gap-4'>
                             <div className='flex items-center gap-2'>
                                 <Link to={`/listing/${listing._id}`} className='h-16 w-16 mt-2'>
                                     <img src={listing.imageUrls[0]} alt='listing cover' className='object-contain mt-2' />
                                 </Link>
-                                <Link className='font-semibold hover:underline truncate' to={`/listing/${listing._id}`}>
+                                <Link className='font-semibold text-white hover:underline truncate' to={`/listing/${listing._id}`}>
                                     <p>{listing.name}</p>
                                 </Link>
                             </div>

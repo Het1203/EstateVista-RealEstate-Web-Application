@@ -33,7 +33,7 @@ export default function Contact({ listing }) {
             {owner && (
                 <div className='mt-5'>
 
-                    <div className='text-center'>
+                    <div className='text-center text-gray-800'>
                         Contact <span className='ml-1 font-semibold'>{owner.username}</span>
                         <span className='ml-1'>for</span>
                         <span className='ml-1 font-semibold'>

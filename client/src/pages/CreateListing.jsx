@@ -141,7 +141,7 @@ export default function CreateListing() {
         <>
             <div className='p-4 min-h-screen mt-20'>
                 <main className='p-3 max-w-4xl mx-auto'>
-                    <h1 className='text-3xl font-semibold text-center my-7 uppercase'>
+                    <h1 className='text-3xl text-gray-800 font-semibold text-center my-7 uppercase'>
                         Create Listing
                     </h1>
 
@@ -249,13 +249,13 @@ export default function CreateListing() {
 
                         <div className='flex flex-col flex-1 max-w-md mx-auto p-3 w-full'>
                             <div className='flex flex-col items-start gap-2'>
-                                <p className='font-semibold block'>Upload Images:</p>
+                                <p className='font-semibold block text-gray-800'>Upload Images:</p>
                                 <span className='font-normal text-gray-600 block'>The first image will be the cover (max 6)</span>
                             </div>
 
                             <div className='mt-5 flex gap-4'>
                                 <input onChange={(e) => setFiles(Array.from(e.target.files))} className='p-3 border border-gray-300 rounded w-full' type="file" id="images" accept='image/*' multiple />
-                                <button disabled={uploadProgress} type='button' onClick={handleImageSubmit} className='p-3 bg-green-700 text-white rounded uppercase hover:opacity-95'>
+                                <button disabled={uploadProgress} type='button' onClick={handleImageSubmit} className='p-3 bg-gray-600 text-white rounded uppercase hover:opacity-95'>
                                     {uploadProgress ? 'Uploading...' : 'Upload'}
                                 </button>
                             </div>

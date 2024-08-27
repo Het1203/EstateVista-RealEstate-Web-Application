@@ -49,40 +49,40 @@ export default function SignUp() {
 
     return (
         <div className='p-4 min-h-screen mt-20'>
-            <h1 className='text-3xl text-center font-semibold my-7 text-dark-500'>
+            <h1 className='text-3xl text-center font-semibold my-7 text-gray-800'>
                 REGISTER
             </h1>
 
-            <form className='mt-4 gap-5' onSubmit={handleSubmit}>
-                <div className='flex flex-col max-w-md mx-auto p-3'>
-                    <label htmlFor='username' className='text-xl text-gray-700'>
+            <form onSubmit={handleSubmit} className='flex flex-col items-center bg-gray-800 max-w-md mx-auto shadow-lg p-6 rounded-lg'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <label htmlFor='username' className='block font-semibold text-white'>
                         Username:
                     </label>
-                    <input type='text' id="username" placeholder='Enter your username' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none' onChange={handleChange} />
+                    <input type='text' id='username' placeholder='Enter your username' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' onChange={handleChange} />
                 </div>
-                <div className='flex flex-col max-w-md mx-auto p-3'>
-                    <label htmlFor='email' className='text-xl text-gray-700'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <label htmlFor='email' className='block font-semibold text-white'>
                         Email:
                     </label>
-                    <input type='email' id='email' placeholder='Enter your email' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none' onChange={handleChange} />
+                    <input type='email' id='email' placeholder='Enter your email' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' onChange={handleChange} />
                 </div>
-                <div className='flex flex-col max-w-md mx-auto p-3'>
-                    <label htmlFor='password' className='text-xl text-gray-700'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <label htmlFor='password' className='block font-semibold text-white'>
                         Password:
                     </label>
-                    <input type='password' id='password' placeholder='Enter your password' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none' onChange={handleChange} />
+                    <input type='password' id='password' placeholder='Enter your password' className='border border-gray-300 mt-2 p-2 rounded-lg focus:outline-none w-full sm:text-sm' onChange={handleChange} />
                 </div>
-                <div className='flex flex-col max-w-md mx-auto p-3'>
-                    <button type='submit' disabled={loading} className='bg-gray-700 text-white p-2 rounded-lg mt-2 hover:opacity-95 disabled:opacity-80'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
+                    <button type='submit' disabled={loading} className='bg-gray-400 text-sm font-semibold text-white p-2 rounded-lg mt-3 mb-2 hover:opacity-95 w-full'>
                         {loading ? 'Loading...' : 'REGISTER'}
                     </button>
                 </div>
-                <div className='flex flex-col max-w-md mx-auto p-3'>
+                <div className='flex flex-col max-w-md mx-auto p-2 w-full'>
                     <OAuth />
                 </div>
             </form>
             <div>
-                <p className='text-center text-gray-500'>
+                <p className='text-center text-gray-500 mt-4'>
                     Already have an account? <a href='/signin' className='text-blue-500'>LOGIN</a>
                 </p>
             </div>

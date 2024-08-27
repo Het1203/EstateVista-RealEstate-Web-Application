@@ -26,7 +26,7 @@ export default function Header() {
 
     return (
         <>
-            <header className='fixed top-0 left-0 w-full shadow-md bg-white z-50'>
+            <header className='fixed top-0 left-0 w-full shadow-md bg-black z-50'>
                 <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
 
                     <Link to='/'>
@@ -36,27 +36,28 @@ export default function Header() {
                         </h1>
                     </Link>
 
-                    <form onSubmit={handleSubmit} className='p-2 border border-gray-300 rounded-lg flex items-center'>
+                    <form onSubmit={handleSubmit} className='p-2 border border-white rounded-lg flex items-center'>
                         <input type='text' placeholder='Search'
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className='bg-transparent focus:outline-none w-24 md:w-64 text-dark-400' />
-                        <button> <FaSearch className='text-gray-500' /> </button>
+                            className='bg-transparent focus:outline-none w-24 md:w-80 text-white placeholder-white'
+                            style={{ color: 'white !important' }} />
+                        <button> <FaSearch className='text-white' /> </button>
                     </form>
 
                     <ul className='flex gap-6'>
                         <Link to='/'>
-                            <li className='hidden md:inline text-dark-600'>
+                            <li className='hidden md:inline text-white'>
                                 Home
                             </li>
                         </Link>
                         <Link to='/about'>
-                            <li className='hidden md:inline text-dark-600'>
+                            <li className='hidden md:inline text-white'>
                                 About
                             </li>
                         </Link>
                         <Link to='/contact'>
-                            <li className='hidden md:inline text-dark-600'>
+                            <li className='hidden md:inline text-white'>
                                 Contact
                             </li>
                         </Link>
@@ -67,7 +68,7 @@ export default function Header() {
                             </Link>
                         ) : (
                             <Link to='/signin'>
-                                <li className='text-dark-600'>
+                                <li className='text-white'>
                                     Login
                                 </li>
                             </Link>

@@ -91,25 +91,25 @@ export default function Home() {
             </div>
 
             <div className='px-24 text-center mt-16'>
-                <h2 className='text-gray-800 font-bold text-2xl lg:text-3xl'>
+                <h2 className='text-black font-bold text-2xl lg:text-3xl'>
                     Discover More About Our Services
                 </h2>
-                <p className='text-gray-500 mt-4 px-24'>
+                <p className='text-gray-800 mt-4 px-24'>
                     At EstateVista, we offer a wide range of services to help you find your dream home.
                     From personalized property recommendations to expert advice on the real estate market,
                     we are here to assist you every step of the way.
                 </p>
                 <Link
                     to={'/search'}
-                    className='text-xs sm:text-sm text-blue-900 font-bold hover:underline px-20'
+                    className='text-xs sm:text-sm text-blue-700 font-bold hover:underline px-20'
                 >
                     Let's get started...
                 </Link>
                 <div className='mt-6'>
-                    <h3 className='text-gray-800 font-semibold text-xl lg:text-2xl'>
+                    <h3 className='text-black font-semibold text-xl lg:text-2xl'>
                         Our Key Features
                     </h3>
-                    <ul className='text-gray-500 mt-4 list-disc list-inside'>
+                    <ul className='text-gray-800 mt-4 list-disc list-inside'>
                         <li>Personalized Property Recommendations</li>
                         <li>Expert Real Estate Advice</li>
                         <li>Comprehensive Market Analysis</li>
@@ -127,7 +127,7 @@ export default function Home() {
                                     background: `url(${listing.imageUrls[0]}) center no-repeat`,
                                     backgroundSize: 'cover',
                                 }}
-                                className='mt-5 md:m-20 h-[300px] md:h-[600px]' // Adjusted margin and height for mobile
+                                className='mt-5 md:m-20 h-[300px] md:h-[600px]'
                             ></div>
                         </SwiperSlide>
                     ))}
@@ -136,10 +136,10 @@ export default function Home() {
 
             <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 p-3 flex flex-col gap-8'>
                 {offerListings && offerListings.length > 0 && (
-                    <div className=''>
+                    <div>
                         <div className='my-3'>
-                            <h2 className='text-2xl font-semibold text-gray-700 uppercase'>Recent offers</h2>
-                            <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>Show more offers</Link>
+                            <h2 className='text-2xl font-semibold text-gray-800 uppercase'>Recent offers</h2>
+                            <Link className='text-sm text-blue-700 hover:underline' to={'/search?offer=true'}>Show more offers</Link>
                         </div>
                         <div className='flex flex-wrap gap-4'>
                             {offerListings.map((listing) => (
@@ -151,8 +151,8 @@ export default function Home() {
                 {rentListings && rentListings.length > 0 && (
                     <div className=''>
                         <div className='my-3'>
-                            <h2 className='text-2xl font-semibold text-gray-700 uppercase'>Recent places for rent</h2>
-                            <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
+                            <h2 className='text-2xl font-semibold text-gray-800 uppercase'>Recent places for rent</h2>
+                            <Link className='text-sm text-blue-700 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
                         </div>
                         <div className='flex flex-wrap gap-4'>
                             {rentListings.map((listing) => (
@@ -164,8 +164,8 @@ export default function Home() {
                 {saleListings && saleListings.length > 0 && (
                     <div className='mb-10'>
                         <div className='my-3'>
-                            <h2 className='text-2xl font-semibold text-gray-700 uppercase'>Recent places for sale</h2>
-                            <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
+                            <h2 className='text-2xl font-semibold text-gray-800 uppercase'>Recent places for sale</h2>
+                            <Link className='text-sm text-blue-700 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
                         </div>
                         <div className='flex flex-wrap gap-4'>
                             {saleListings.map((listing) => (
