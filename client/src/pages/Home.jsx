@@ -5,6 +5,7 @@ import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
 import ListingItem from '../components/ListingItem';
+import bgImage from '../assets/landingimg.jpg';
 
 export default function Home() {
     const [offerListings, setOfferListings] = React.useState([]);
@@ -47,22 +48,73 @@ export default function Home() {
     }, []);
 
     return (
-        <div className='min-h-screen mt-20'>
-            <div className='flex flex-col gap-6 p-20 px-3 max-w-6xl mx-auto'>
-                <h1 className='text-gray-800 font-bold text-3xl lg:text-6xl'>
-                    Welcome to <span className='text-gray-600'>Estate</span><span className='text-gray-800'>Vista</span>
-                </h1>
-                <div className='text-gray-500'>
-                    EstateVista is your ultimate destination for finding the perfect home.
-                    <br />
-                    Explore a diverse range of properties tailored to your needs.
+        <div className='min-h-screen mt-16'>
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                height: '650px',
+                overflow: 'hidden',
+                boxSizing: 'border-box'
+            }}>
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${bgImage})`,
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    filter: 'blur(4px)',
+                    zIndex: -1,
+                    border: 'none',
+                    margin: 'auto'
+                }}></div>
+                <div style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    padding: '20px',
+                    maxWidth: '6xl',
+                    margin: 'auto',
+                    boxSizing: 'border-box'
+                }}>
+                    <h1 className='text-white font-bold text-3xl lg:text-6xl mt-32 px-20'>
+                        Welcome to <span className='text-gray-600'>Estate</span><span className='text-gray-800'>Vista</span>
+                    </h1>
+                    <div className='text-white px-20 mb-20 mt-4'>
+                        EstateVista is your ultimate destination for finding the perfect home.
+                        <br />
+                        Explore a diverse range of properties tailored to your needs.
+                    </div>
                 </div>
+            </div>
+
+            <div className='px-24 text-center mt-16'>
+                <h2 className='text-gray-800 font-bold text-2xl lg:text-3xl'>
+                    Discover More About Our Services
+                </h2>
+                <p className='text-gray-500 mt-4 px-24'>
+                    At EstateVista, we offer a wide range of services to help you find your dream home.
+                    From personalized property recommendations to expert advice on the real estate market,
+                    we are here to assist you every step of the way.
+                </p>
                 <Link
                     to={'/search'}
-                    className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
+                    className='text-xs sm:text-sm text-blue-900 font-bold hover:underline px-20'
                 >
                     Let's get started...
                 </Link>
+                <div className='mt-6'>
+                    <h3 className='text-gray-800 font-semibold text-xl lg:text-2xl'>
+                        Our Key Features
+                    </h3>
+                    <ul className='text-gray-500 mt-4 list-disc list-inside'>
+                        <li>Personalized Property Recommendations</li>
+                        <li>Expert Real Estate Advice</li>
+                        <li>Comprehensive Market Analysis</li>
+                    </ul>
+                </div>
             </div>
 
             <Swiper navigation>
@@ -75,14 +127,14 @@ export default function Home() {
                                     background: `url(${listing.imageUrls[0]}) center no-repeat`,
                                     backgroundSize: 'cover',
                                 }}
-                                className='h-[500px]'
+                                className='mt-5 md:m-20 h-[300px] md:h-[600px]' // Adjusted margin and height for mobile
                             ></div>
                         </SwiperSlide>
                     ))}
             </Swiper>
 
 
-            <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 p-3 flex flex-col gap-8 my-10'>
+            <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 p-3 flex flex-col gap-8'>
                 {offerListings && offerListings.length > 0 && (
                     <div className=''>
                         <div className='my-3'>
@@ -110,7 +162,7 @@ export default function Home() {
                     </div>
                 )}
                 {saleListings && saleListings.length > 0 && (
-                    <div className=''>
+                    <div className='mb-10'>
                         <div className='my-3'>
                             <h2 className='text-2xl font-semibold text-gray-700 uppercase'>Recent places for sale</h2>
                             <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
