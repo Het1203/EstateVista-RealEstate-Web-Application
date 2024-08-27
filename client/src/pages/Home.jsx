@@ -103,7 +103,9 @@ export default function Home() {
                     to={'/search'}
                     className='text-xs sm:text-sm text-blue-700 font-bold hover:underline px-20'
                 >
-                    Let's get started...
+                    <button className='bg-gray-700 text-white p-3 rounded mt-4'>
+                        Let's get started...
+                    </button>
                 </Link>
                 <div className='mt-6'>
                     <h3 className='text-black font-semibold text-xl lg:text-2xl'>

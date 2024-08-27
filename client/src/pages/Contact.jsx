@@ -47,7 +47,7 @@ export default function Contact() {
     return (
         <div className="flex flex-col min-h-screen mt-10 items-center justify-center">
             <div className="w-full max-w-md px-4">
-                <h1 className="text-3xl font-bold mb-8 text-center text-gray-800 mt-5 uppercase">Contact Us</h1>
+                <h1 className="text-3xl font-bold mb-8 text-center text-gray-800 mt-10 uppercase">Contact Us</h1>
                 <p className="mb-8 text-center text-slate-700">We'd love to hear from you! Whether you have a question about our services, pricing, or anything else, our team is ready to answer all your questions.</p>
                 <form onSubmit={handleSubmit} className="flex flex-col items-center max-w-md mx-auto bg-gray-800 shadow-lg p-6 rounded-lg space-y-4">
                     <div className="w-full">
