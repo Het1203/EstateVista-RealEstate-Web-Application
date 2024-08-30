@@ -1,4 +1,3 @@
-# Real-Estate-Web-Application
 # EstateVista
 
 EstateVista is a comprehensive real estate platform designed to simplify the process of finding a new home. Users can explore a wide variety of property listings, including recent offers, places for rent, and places for sale. The application provides an intuitive and user-friendly interface, making it easy for users to search and filter properties based on their preferences. EstateVista aims to be the ultimate destination for anyone looking to buy or rent a property.
@@ -11,8 +10,6 @@ EstateVista is a comprehensive real estate platform designed to simplify the pro
 - **Responsive Design:** The application is designed to be fully responsive, providing a seamless experience across different devices and screen sizes.
 
 ## APIs
-
-### Authentication Routes (`auth.route.js`)
 - **Signup:** `POST /signup`  
   Registers a new user.
 - **Signin:** `POST /signin`  
