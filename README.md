@@ -42,5 +42,4 @@ EstateVista is a comprehensive real estate platform designed to simplify the pro
 - **Frontend:** React, Tailwind CSS
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **API:** RESTful API
 - **Other Tools:** Swiper.js for carousel functionality, React Router for navigation
